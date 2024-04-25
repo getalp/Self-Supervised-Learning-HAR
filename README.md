@@ -1,4 +1,4 @@
-# Leave-One-Dataset-Out (LODO)
+# Self-Supervised Learning Models for Sensor-Based Human Activity Recognition
 Tensorflow implementation of **Self-Supervised Learning with LODO**:
 
 This work has been published in **SmartComp2023**.
@@ -9,8 +9,18 @@ This work has been published in **SmartComp2023**.
 
 
 <p align="center">
-  <img width="80%" alt="Leave-One-Dataset-Out" src="Figs/LODO_Fig.png">
+  <img width="80%" alt="Leave-One-Dataset-Out" src="images/SimCLR_img.png">
 </p>
+
+<p align="center">
+  <img width="80%" alt="Leave-One-Dataset-Out" src="images/MAE_HAR.png">
+</p>
+
+
+<p align="center">
+  <img width="80%" alt="Leave-One-Dataset-Out" src="images/Data2vec_img.png">
+</p>
+
 
 If our project is helpful for your research, please consider citing : 
 ``` 
