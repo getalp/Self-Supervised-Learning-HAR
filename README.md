@@ -88,8 +88,7 @@ Memory: 80GB
 We provide scripts to automate downloading (With the exception of the MobiAct dataset which requires manual request from  the authors) and proprocessing the datasets used for this study.
 See scripts in dataset folders. e.g, for the UCI dataset, run DATA_UCI.py
 
-For running the 'Combined' dataset training and evaluation pipeline, all datasets must first be downloaded and processed.
-Please run all scripts in the 'datasets' folder.
+Please run all scripts in the 'datasets' folder to launch train the model in our pipeline.
 
 Tip: Manually downloading the datasets and placing them in the 'datasets/dataset' folder may be a good alternative for stabiltiy if the download pipeline keeps failing VIA the provided scripts.
 
@@ -200,8 +199,6 @@ The returned model is packaged as a conventional Tensorflow/Keras model. After l
 ### 3.2 Using the LODO partition
 
 After downloading and running all the DATA processing scripts in the dataset folder, launch the LODO_Samples.ipynb jupyter notebook OR LODO_Samples.py script to partition the datasets as used in our study.  
-
-
 
 
 ### 3.3 Running Our Self-Supervised Learning Pretraining Pipeline
