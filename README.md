@@ -13,7 +13,7 @@ This work has been published in **SmartComp2023**.
 </p>
 
 <p align="center">
-  <img width="80%" alt="MAE" src="images/MAE_HAR.png">
+  <img width="80%" alt="MAE" src="images/MAE_HAR_img.png">
 </p>
 
 
