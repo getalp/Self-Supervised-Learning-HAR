@@ -9,16 +9,16 @@ This work has been published in **SmartComp2023**.
 
 
 <p align="center">
-  <img width="80%" alt="Leave-One-Dataset-Out" src="images/SimCLR_img.png">
+  <img width="80%" alt="SimCLR" src="images/SimCLR_img.png">
 </p>
 
 <p align="center">
-  <img width="80%" alt="Leave-One-Dataset-Out" src="images/MAE_HAR.png">
+  <img width="80%" alt="MAE" src="images/MAE_HAR.png">
 </p>
 
 
 <p align="center">
-  <img width="80%" alt="Leave-One-Dataset-Out" src="images/Data2vec_img.png">
+  <img width="80%" alt="Data2vec" src="images/Data2vec_img.png">
 </p>
 
 
