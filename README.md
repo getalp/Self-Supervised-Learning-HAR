@@ -143,10 +143,11 @@ https://zenodo.org/records/11067076?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6Ijk3Y2YxM
 
 There are many variations to the provided pre-trained models.
 
-Eg., The architecture used, the SSL technique used and the dataset that was left-out.
+E.g., The architecture used, the SSL technique used, and the dataset that was left out.
 
-We provide scripts to load the pretrained model
+We provide scripts to load the pre-trained model
 After downloading the desired models, please import and add the following code:
+
 
 ```
 
@@ -183,17 +184,17 @@ To specify the state of the model pre-trained model, change the value of the 're
 'pipeline','featureExtractor','classificationModel'
 ```
 
-Passing the 'pipeline' argument will return the entire SSL compononents eg., for MAE, both the decoder and encoder are presents.
+Passing the 'pipeline' argument will return all SSL components, e.g., for MAE, both the decoder and encoder are present.
 
 Passing the 'featureExtractor' argument will return only the feature extractor of the encoder.
 
-Passing the 'classificationModel' argument will return the feature extrator connected to a dense layer of size 1024 and the classification heads. Note that the added dense and classification heads are not yet trained.
+Passing the 'classificationModel' argument will return the feature extractor connected to a dense layer of size 1024 and the classification heads. Note that the added dense and classification heads are not yet trained.
 
-To specify the amount of classifacation heads when 'returnType' is set to 'classificationModel', change the value of the 'activityCount' parameter to your desired classification head count.
+To specify the number of classification heads when 'returnType' is set to 'classificationModel,' change the value of the 'activityCount' parameter to your desired classification head count.
 
-To specify the directory of the pre-trained model you have downloaded, change the value of the 'modelDirectory' parameter to your it's corresponding location.
+To specify the directory of the pre-trained model you downloaded, change the value of the 'modelDirectory' parameter to your corresponding location.
 
-The returned model is a packaged as a conventional tensorflow/keras model. After loading the model, you may further fine-tune the model on your desired tasks.
+The returned model is packaged as a conventional Tensorflow/Keras model. After loading the model, you may further fine-tune it for your desired tasks.
 
 
 ### 3.2 Using the LODO partition
