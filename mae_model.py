@@ -539,7 +539,7 @@ class SensorWisePatchEncoder(layers.Layer):
         self.position_embedding = layers.Embedding(
             input_dim=self.num_frames, output_dim=self.embedding_size)
 
-    def call(self, framedInput, downstreaming = True, training = None):
+    def call(self, framedInput, downstream = True, training = None):
         
         batch_size = tf.shape(framedInput)[0]
         positions = tf.range(start=0, limit=self.num_frames, delta=1)
@@ -551,7 +551,7 @@ class SensorWisePatchEncoder(layers.Layer):
         projectedInput = tf.concat((self.accProjection(framedInput[:,:,:self.frame_size // 2]),self.gyroProjection(framedInput[:,:,self.frame_size // 2: ])),axis=2)
         patch_embeddings = (projectedInput + pos_embeddings)  # (B, num_frames, projection_dim)
 #         training=True
-        if(downstreaming):
+        if(downstream):
             return patch_embeddings
         else:
             mask_indices, unmask_indices = self.get_random_indices(batch_size)
@@ -610,7 +610,7 @@ class PatchEncoder(layers.Layer):
         self.position_embedding = layers.Embedding(
             input_dim=self.num_patches, output_dim=self.embedding_size)
 
-    def call(self, patches, downstreaming = True, training = None):
+    def call(self, patches, downstream = True, training = None):
         
         batch_size = tf.shape(patches)[0]
         positions = tf.range(start=0, limit=self.num_patches, delta=1)
@@ -624,7 +624,7 @@ class PatchEncoder(layers.Layer):
         patch_embeddings = self.projection(patches)
         patch_embeddings = (patch_embeddings + pos_embeddings)  # (B, num_patches, projection_dim)
 #         training=True
-        if(downstreaming):
+        if(downstream):
             return patch_embeddings
         else:
             mask_indices, unmask_indices = self.get_random_indices(batch_size)
@@ -699,7 +699,7 @@ class MaskedAutoencoder(tf.keras.Model):
         embeddings_output = self.downstreamPooler(encoder_outputs)
         return embeddings_output
     
-    def calculate_loss(self, inputData, training = False):
+    def calculate_loss(self, inputData, training = False, downstream = True):
         patches = self.patch_layer(inputData)
         (
             unmasked_embeddings,
@@ -707,7 +707,7 @@ class MaskedAutoencoder(tf.keras.Model):
             unmasked_positions,
             mask_indices,
             unmask_indices,
-        ) = self.patch_encoder(patches, downstreaming = training)
+        ) = self.patch_encoder(patches, downstreaming = downstream, training = training)
 
         # Pass the unmaksed patche to the encoder.
         encoder_outputs = self.encoder(unmasked_embeddings, training = training)
@@ -731,7 +731,7 @@ class MaskedAutoencoder(tf.keras.Model):
         
     def train_step(self, inputData):
         with tf.GradientTape() as tape:
-            total_loss, loss_patch, loss_output = self.calculate_loss(inputData,training = True)
+            total_loss, loss_patch, loss_output = self.calculate_loss(inputData,training = True, downstream = False)
 
         # Apply gradients.
         train_vars = [
@@ -751,7 +751,7 @@ class MaskedAutoencoder(tf.keras.Model):
         self.compiled_metrics.update_state(loss_patch, loss_output)
         return {m.name: m.result() for m in self.metrics}
     def test_step(self, images):
-        total_loss, loss_patch, loss_output = self.calculate_loss(images[0], training = False)
+        total_loss, loss_patch, loss_output = self.calculate_loss(images[0], training = False,downstream = False)
 
         # Update the trackers.
         self.compiled_metrics.update_state(loss_patch, loss_output)
