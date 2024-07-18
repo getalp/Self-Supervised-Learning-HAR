@@ -1,8 +1,6 @@
 # Self-Supervised Learning Models for Sensor-Based Human Activity Recognition
 Tensorflow implementation of **Self-Supervised Learning with LODO**:
 
-This work has been published in **SmartComp2023**.
-
 **Comparing Self-Supervised Learning Techniques for Wearable Human Activity Recognition** [[Paper](https://arxiv.org/abs/2404.15331)]
 
 *[Sannara Ek](https://scholar.google.com/citations?user=P1F8sQgAAAAJ&hl=en&oi=ao),[Riccardo Presotto](https://sites.google.com/view/riccardopresotto/home), [Gabriele Civitarese](https://civitarese.di.unimi.it/), [François Portet](https://lig-membres.imag.fr/portet/home.php), [Philippe Lalanda](https://lig-membres.imag.fr/lalanda/), [Claudio Bettini](https://sites.google.com/view/claudio-bettini)*
